@@ -4,7 +4,7 @@ const TodoItem = (props) => {
     <div>
       <h3>{title}</h3>
       <p>{details}</p>
-      <h2>{completed}</h2>
+      <h4>{completed + ""}</h4>
     </div>
   );
 };

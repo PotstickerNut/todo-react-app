@@ -1,13 +1,13 @@
 import TodosItem from "./TodosItem";
-import todos from "../data/todosData";
+// import todos from "../data/todosData";
 
 const TodosList = (props) => {
   // const { todos } = props;
   return (
     <div>
       <h2>To-Dos</h2>
-      {todos.map((todo) => (
-        <TodosItem todo={todo} key={todo.id} />
+      {props.todosData.map((todo, idx) => (
+        <TodosItem todo={todo} key={idx} />
       ))}
     </div>
   );

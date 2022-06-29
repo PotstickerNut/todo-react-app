@@ -7,12 +7,12 @@ import TodoList from "./components/TodosList";
 
 class App extends Component {
   state = {
+    todosData: todosData,
     id: 0,
     title: "",
     details: "",
     completed: false,
     created_at: "",
-    todosData: todosData,
   };
 
   handleChange = (event) => {
@@ -23,11 +23,15 @@ class App extends Component {
     event.preventDefault();
     // create a new product object
     const newTodo = {
+      id: this.state.id,
       title: this.state.title,
       details: this.state.details,
       completed: this.state.completed,
       created_at: this.state.created_at,
     };
+    console.log(newTodo);
+    console.log(todosData);
+
     // set new values in the state
     this.setState({
       todosData: [newTodo, ...this.state.todosData],
@@ -37,12 +41,14 @@ class App extends Component {
       completed: false,
       created_at: "",
     });
+    console.log(todosData);
   };
 
   render() {
     return (
       <div className="App">
         <Navbar />
+        {/* new todo form */}
         <form onSubmit={this.handleSubmit}>
           <label htmlFor="id">ID</label>
           <input
@@ -81,7 +87,8 @@ class App extends Component {
           />
           <input type="submit" value="Submit" />
         </form>
-        <TodoList />
+
+        <TodoList todosData={this.state.todosData} />
       </div>
     );
   }
